@@ -6,7 +6,10 @@ import matplotlib.pyplot as plt
 # ---------------------------------------------------------
 # 1. SETUP & LOAD MODEL
 # ---------------------------------------------------------
-st.set_page_config(# Custom CSS to make it look nicer
+# FIXED: Added the closing bracket ')' at the end of this line
+st.set_page_config(page_title="Student Performance Predictor", layout="centered")
+
+# Custom CSS to make it look nicer
 st.markdown("""
     <style>
     /* Change the background color */
@@ -24,16 +27,17 @@ st.markdown("""
         background-color: #4CAF50;
         color: white;
         border-radius: 10px;
+        font-weight: bold;
     }
     </style>
-    """, unsafe_allow_html=True))
+    """, unsafe_allow_html=True)
 
 # Load the saved model
 try:
     with open('student_model.pkl', 'rb') as file:
         model = pickle.load(file)
 except FileNotFoundError:
-    st.error("Error: 'student_model.pkl' not found. Please run 'model.py' first to train the model.")
+    st.error("Error: 'student_model.pkl' not found. Please upload it to GitHub.")
     st.stop()
 
 # ---------------------------------------------------------
